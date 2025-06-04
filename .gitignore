@@ -3,7 +3,7 @@ public
 src
 bun.lockb
 eslint.config.js
-index.html
+!index.html
 jsrepo.json
 package.json
 vite.config.js
