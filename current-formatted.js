@@ -84,6 +84,7 @@ var fieldMappings = [
       "dr.mgr.educationalandresearchinstitute",
     ],
     negPattern: undefined,
+    negPossibleValues: undefined,
   },
   {
     patterns: [
@@ -99,6 +100,7 @@ var fieldMappings = [
     ],
     value: "qwer",
     negPattern: undefined,
+    negPossibleValues: undefined,
   },
   {
     patterns: [
@@ -116,6 +118,7 @@ var fieldMappings = [
     ],
     value: "1324",
     negPattern: undefined,
+    negPossibleValues: undefined,
   },
   {
     patterns: [
@@ -128,13 +131,14 @@ var fieldMappings = [
     ],
     value: "123434",
     negPattern: undefined,
+    negPossibleValues: undefined,
   },
   {
     patterns: ["whatsapp no", "whatsapp number"],
     value: "987654",
     negPattern: undefined,
+    negPossibleValues: undefined,
   },
-
   {
     patterns: [
       "email",
@@ -147,67 +151,98 @@ var fieldMappings = [
     ],
     value: "qewrrg",
     negPattern: undefined,
+    negPossibleValues: undefined,
   },
   {
     patterns: ["year", "year of study"],
     negPattern: ["year of passing"],
     value: "4",
     ...(yearMapping["4"] && { possibleValues: yearMapping["4"] }),
+    negPossibleValues: undefined,
   },
   {
     patterns: ["branch", "department", "stream"],
     ...(deptMapping["DS&AI"] && {
       value: deptMapping["DS&AI"]["value"],
       possibleValues: deptMapping["DS&AI"]["possibleValues"],
+      negPattern: undefined,
+      negPossibleValues: undefined,
     }),
-    negPattern: undefined,
   },
   {
     patterns: ["gender"],
     value: "Male",
+    negPossibleValues: undefined,
     ...("Male" == "Male" && {
       negPossibleValues: ["female", "f"],
       possibleValues: ["male", "m"],
     }),
     ...("Male" == "Female" && { possibleValues: ["female", "f"] }),
+    negPattern: undefined,
   },
   {
     patterns: ["semester"],
     value: "8",
     ...(semMapping["8"] && { possibleValues: semMapping["8"] }),
     negPattern: undefined,
+    negPossibleValues: undefined,
   },
   {
     patterns: ["degree"],
     value: "btech",
     possibleValues: ["b.tech"],
     negPattern: undefined,
+    negPossibleValues: undefined,
   },
-  { patterns: ["section"], value: "B", negPattern: undefined },
+  {
+    patterns: ["section"],
+    value: "B",
+    negPattern: undefined,
+    negPossibleValues: undefined,
+  },
   {
     patterns: ["10%", "10 %", "10th%", "10th %", "10th percentage"],
     value: "63",
     negPattern: undefined,
+    negPossibleValues: undefined,
   },
   {
     patterns: ["12%", "12 %", "12th%", "12th %", "12th percentage"],
     value: "87",
     negPattern: undefined,
+    negPossibleValues: undefined,
   },
-  { patterns: ["ug cgpa", "cgpa"], negPattern: ["pg cgpa"], value: "7.93" },
-  { patterns: ["arrears"], value: "none", negPattern: undefined },
-  { patterns: ["date of birth"], value: "2004-11-16", negPattern: undefined },
+  {
+    patterns: ["ug cgpa", "cgpa"],
+    negPattern: ["pg cgpa"],
+    value: "7.93",
+    negPossibleValues: undefined,
+  },
+  {
+    patterns: ["arrears"],
+    value: "none",
+    negPattern: undefined,
+    negPossibleValues: undefined,
+  },
+  {
+    patterns: ["date of birth"],
+    value: "2004-11-16",
+    negPattern: undefined,
+    negPossibleValues: undefined,
+  },
   {
     patterns: ["year of passing out", "year of passing"],
     value: "2026",
     possibleValues: ["2026"],
     negPattern: undefined,
+    negPossibleValues: undefined,
   },
   {
     patterns: ["are you interested to attend the interview process"],
     value: "none",
-    negPattern: undefined,
     ...("yes" === "yes" && { value: "yes", possibleValues: ["yes"] }),
+    negPattern: undefined,
+    negPossibleValues: undefined,
   },
 ];
 function normalizeString(str) {
@@ -249,19 +284,25 @@ questions.forEach((question) => {
               }
             }
           } else if (radios.length > 0) {
+            console.log("--radio fd: ", questionText);
             for (const radio of radios) {
               var radioValue = radio.getAttribute("data-value");
               if (mapping.possibleValues) {
                 var normalized = normalizeString(radioValue);
+                console.log("##normalized :", normalized);
                 if (
                   mapping.negPossibleValues &&
                   mapping.negPossibleValues.includes(normalized)
                 ) {
+                  console.log("skipping ---", mapping.negPossibleValues);
+
                   continue;
-                }
-                if (mapping.possibleValues.includes(normalized)) {
+                } else if (mapping.possibleValues.includes(normalized)) {
+                  console.log("**found match :", normalized);
                   radio.click();
                   break;
+                } else {
+                  console.log(mapping);
                 }
               }
             }

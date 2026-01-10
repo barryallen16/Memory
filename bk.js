@@ -83,6 +83,9 @@ var fieldMappings = [
       "Dr. M.G.R. Educational & Research Institute",
       "dr.mgr.educationalandresearchinstitute",
     ],
+        negPattern:undefined,
+        negPossibleValues:undefined
+
   },
   {
     patterns: [
@@ -97,6 +100,8 @@ var fieldMappings = [
       "participant name",
     ],
     value: ${JSON.stringify(String(data.name))},
+            negPattern:undefined,
+        negPossibleValues:undefined
   },
   {
     patterns: [
@@ -113,6 +118,8 @@ var fieldMappings = [
       "roll no",
     ],
     value: ${JSON.stringify(String(data.regNo))},
+            negPattern:undefined,
+        negPossibleValues:undefined
   },
   {
     patterns: [
@@ -124,8 +131,12 @@ var fieldMappings = [
       "mobile no",
     ],
     value: ${JSON.stringify(String(data.phone))},
+            negPattern:undefined,
+        negPossibleValues:undefined
   },
-  { patterns: ["whatsapp no", "whatsapp number"], value: ${JSON.stringify(String(data.whatsapp))} },
+  { patterns: ["whatsapp no", "whatsapp number"], value: ${JSON.stringify(String(data.whatsapp))},
+        negPattern:undefined,
+        negPossibleValues:undefined },
   {
     patterns: [
       "email",
@@ -137,23 +148,29 @@ var fieldMappings = [
       "mail id",
     ],
     value: ${JSON.stringify(String(data.email))},
+            negPattern:undefined,
+        negPossibleValues:undefined
   },
   {
     patterns: ["year", "year of study"],
     negPattern: ["year of passing"],
     value: ${JSON.stringify(String(data.year))},
     ...(yearMapping[${JSON.stringify(String(data.year))}] && { possibleValues: yearMapping[${JSON.stringify(String(data.year))}] }),
+        negPossibleValues:undefined
   },
   {
     patterns: ["branch", "department", "stream"],
     ...(deptMapping[${JSON.stringify(String(data.dept))}] && {
       value: deptMapping[${JSON.stringify(String(data.dept))}]["value"],
       possibleValues: deptMapping[${JSON.stringify(String(data.dept))}]["possibleValues"],
+              negPattern:undefined,
+        negPossibleValues:undefined
     }),
   },
   {
     patterns: ["gender"],
     value: ${JSON.stringify(String(data.gender))},
+    negPossibleValues:undefined,
     ...(${JSON.stringify(String(data.gender))}== "Male" && {
       negPossibleValues: ["female", "f"],
       possibleValues: ["male", "m"],
@@ -161,29 +178,44 @@ var fieldMappings = [
     ...(${JSON.stringify(String(data.gender))} == "Female" && {
       possibleValues: ["female", "f"],
     }),
+            negPattern:undefined,
   },
   {
     patterns: ["semester"],
     value: ${JSON.stringify(String(data.semester))},
     ...(semMapping[${JSON.stringify(String(data.semester))}] && {
       possibleValues: semMapping[${JSON.stringify(String(data.semester))}],
+
     }),
+            negPattern:undefined,
+        negPossibleValues:undefined
   },
-  { patterns: ["degree"], value: "btech", possibleValues: ["b.tech"] },
-  { patterns: ["section"], value: ${JSON.stringify(String(data.section))} },
-  { patterns: ["10%", "10 %","10th%","10th %", "10th percentage"], value: ${JSON.stringify(String(data.tenPercent))} },
-  { patterns: ["12%", "12 %","12th%","12th %", "12th percentage"], value: ${JSON.stringify(String(data.twelvePercent))} },
+  { patterns: ["degree"], value: "btech", possibleValues: ["b.tech"] ,        negPattern:undefined,
+        negPossibleValues:undefined},
+  { patterns: ["section"], value: ${JSON.stringify(String(data.section))} ,         negPattern:undefined,
+        negPossibleValues:undefined},
+  { patterns: ["10%", "10 %","10th%","10th %", "10th percentage"], value: ${JSON.stringify(String(data.tenPercent))} ,         negPattern:undefined,
+        negPossibleValues:undefined},
+  { patterns: ["12%", "12 %","12th%","12th %", "12th percentage"], value: ${JSON.stringify(String(data.twelvePercent))},         negPattern:undefined,
+        negPossibleValues:undefined },
   {
     patterns: ["ug cgpa", "cgpa"],
     negPattern: ["pg cgpa"],
     value: ${JSON.stringify(String(data.cgpa))},
+        negPossibleValues:undefined
   },
-  { patterns: ["arrears"], value: ${JSON.stringify(String(data.arrears))} },
-  { patterns: ["date of birth"], value: ${JSON.stringify(String(data.dob))} },
+  { patterns: ["arrears"], value: ${JSON.stringify(String(data.arrears))}, 
+        negPattern:undefined,
+        negPossibleValues:undefined },
+  { patterns: ["date of birth"], value: ${JSON.stringify(String(data.dob))},
+negPattern:undefined,
+        negPossibleValues:undefined },
   {
     patterns: ["year of passing out", "year of passing"],
     value: ${JSON.stringify(String(data.yop))},
     possibleValues: [${JSON.stringify(String(data.yop))}],
+    negPattern:undefined,
+        negPossibleValues:undefined
   },
   {
     patterns: ["are you interested to attend the interview process"],
@@ -191,12 +223,14 @@ value:"none",
       ...(${JSON.stringify(String(data.interview))} === "yes" && {
       value: "yes",
       possibleValues: ["yes"]}
-)
+),
+negPattern:undefined,
+        negPossibleValues:undefined
   }
 
 ];
 function normalizeString(str) {
-  return str.toLowerCase().replace(/\s+/g, "");
+  return str.toLowerCase().replace(/\\s+/g, "");
 }
 questions.forEach((question) => {
   if (question.querySelector("span")) {
