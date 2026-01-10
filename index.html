@@ -109,7 +109,8 @@
             >
               <li>
                 <button
-                  class="flex items-center justify-start md:justify-center gap-2 py-2 px-3 text-white bg-black md:hover:text-amber-400 rounded-sm w-full md:w-auto" id="home-btn"
+                  class="flex items-center justify-start md:justify-center gap-2 py-2 px-3 text-white bg-black md:hover:text-amber-400 rounded-sm w-full md:w-auto"
+                  id="home-btn"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -279,9 +280,10 @@
                 class="group relative bg-white/5 backdrop-blur-lg rounded-lg p-3 border border-white/10 hover:border-amber-400/50 transition-all duration-200 flex items-center justify-between cursor-pointer shadow-sm hover:shadow-amber-400/10"
               >
                 <select
-                  class="bg-transparent border-none focus:outline-none text-white/60 font-medium text-sm w-full truncate"
+                  required
+                  class="bg-transparent border-none focus:outline-none text-white invalid:text-white/60 font-medium text-sm w-full truncate"
                 >
-                  <option value="" disabled="" class="text-white/60" selected>
+                  <option value="" disabled class="text-gray-500" selected>
                     College name
                   </option>
                   <option value="mgruniversity" class="text-black">
@@ -314,9 +316,10 @@
                 class="group relative bg-white/5 backdrop-blur-lg rounded-lg p-3 border border-white/10 hover:border-amber-400/50 transition-all duration-200 flex items-center justify-between cursor-pointer shadow-sm hover:shadow-amber-400/10"
               >
                 <select
-                  class="bg-transparent border-none focus:outline-none text-white/60 font-medium text-sm w-full truncate"
+                  required
+                  class="bg-transparent border-none focus:outline-none text-white invalid:text-white/60 font-medium text-sm w-full truncate"
                 >
-                  <option value="" disabled="" class="text-white/60" selected>
+                  <option value="" disabled class="text-gray-500" selected>
                     Degree
                   </option>
                   <option value="btech" class="text-black">B. Tech.</option>
@@ -347,13 +350,17 @@
                 class="group relative bg-white/5 backdrop-blur-lg rounded-lg p-3 border border-white/10 hover:border-amber-400/50 transition-all duration-200 flex items-center justify-between cursor-pointer shadow-sm hover:shadow-amber-400/10"
               >
                 <select
-                  class="bg-transparent border-none focus:outline-none text-white/60 font-medium text-sm w-full truncate"
-                  aria-placeholder="Dept"
+                  required
+                  class="bg-transparent border-none focus:outline-none text-white invalid:text-white/60 font-medium text-sm w-full truncate"
                 >
-                  <option value="" disabled="" class="text-white/60" selected>
+                  <option value="" disabled class="text-gray-500" selected>
                     Dept
                   </option>
                   <option value="DS&AI" class="text-black">DS & AI</option>
+                  <option value="CFIS" class="text-black">CFIS</option>
+                  <option value="CSE" class="text-black">CSE</option>
+                  <option value="AI" class="text-black">AI</option>
+                  <option value="IT" class="text-black">IT</option>
                 </select>
                 <div class="flex-shrink-0 ml-2">
                   <svg
@@ -412,15 +419,16 @@
                 class="group relative bg-white/5 backdrop-blur-lg rounded-lg p-3 border border-white/10 hover:border-amber-400/50 transition-all duration-200 flex items-center justify-between cursor-pointer shadow-sm hover:shadow-amber-400/10"
               >
                 <select
-                  class="bg-transparent border-none focus:outline-none text-white/60 font-medium text-sm w-full truncate"
+                  required
+                  class="bg-transparent border-none focus:outline-none text-white invalid:text-white/60 font-medium text-sm w-full truncate"
                 >
-                  <option value="" disabled="" class="text-white/60" selected>
+                  <option value="" disabled class="text-gray-500" selected>
                     Year
                   </option>
-                  <option value="I-year" class="text-black">1st year</option>
-                  <option value="II-year" class="text-black">2nd year</option>
-                  <option value="III-year" class="text-black">3rd year</option>
-                  <option value="IV-year" class="text-black">4th year</option>
+                  <option value="1" class="text-black">1st year</option>
+                  <option value="2" class="text-black">2nd year</option>
+                  <option value="3" class="text-black">3rd year</option>
+                  <option value="4" class="text-black">4th year</option>
                 </select>
                 <div class="flex-shrink-0 ml-2">
                   <svg
@@ -448,9 +456,10 @@
                 class="group relative bg-white/5 backdrop-blur-lg rounded-lg p-3 border border-white/10 hover:border-amber-400/50 transition-all duration-200 flex items-center justify-between cursor-pointer shadow-sm hover:shadow-amber-400/10"
               >
                 <select
-                  class="bg-transparent border-none focus:outline-none text-white/60 font-medium text-sm w-full truncate"
+                  required
+                  class="bg-transparent border-none focus:outline-none text-white invalid:text-white/60 font-medium text-sm w-full truncate"
                 >
-                  <option value="" disabled="" class="text-white/60" selected>
+                  <option value="" disabled class="text-gray-500" selected>
                     Semester
                   </option>
                   <option value="1" class="text-black">1</option>
@@ -488,10 +497,10 @@
                 class="group relative bg-white/5 backdrop-blur-lg rounded-lg p-3 border border-white/10 hover:border-amber-400/50 transition-all duration-200 flex items-center justify-between cursor-pointer shadow-sm hover:shadow-amber-400/10"
               >
                 <select
-                  class="bg-transparent border-none focus:outline-none text-white/60 font-medium text-sm w-full truncate"
-                  aria-placeholder="Dept"
+                  required
+                  class="bg-transparent border-none focus:outline-none text-white invalid:text-white/60 font-medium text-sm w-full truncate"
                 >
-                  <option value="" disabled="" class="text-white/60" selected>
+                  <option value="" disabled class="text-white/60" selected>
                     Year of passing
                   </option>
                   <option value="2026" class="text-black">2026</option>
@@ -712,9 +721,10 @@
                 class="group relative bg-white/5 backdrop-blur-lg rounded-lg p-3 border border-white/10 hover:border-amber-400/50 transition-all duration-200 flex items-center justify-between cursor-pointer shadow-sm hover:shadow-amber-400/10"
               >
                 <select
-                  class="bg-transparent border-none focus:outline-none text-white/60 font-medium text-sm w-full truncate"
+                  required
+                  class="bg-transparent border-none focus:outline-none text-white invalid:text-white/60 font-medium text-sm w-full truncate"
                 >
-                  <option value="" disabled="" class="text-white/60" selected>
+                  <option value="" disabled class="text-gray-500" selected>
                     Gender
                   </option>
                   <option value="Male" class="text-black">Male</option>
@@ -751,7 +761,7 @@
                   onfocus="(this.type = 'date')"
                   onblur="(this.type = 'text')"
                   id="date"
-                  class="w-full text-white/60 scheme-dark placeholder:text-white/60"
+                  class="w-full text-white scheme-dark placeholder:text-white/60"
                 />
 
                 <div class="flex-shrink-0 ml-2">
@@ -776,40 +786,41 @@
                   Add DOB
                 </div>
               </div>
-                              <div
-                  class="group relative bg-white/5 backdrop-blur-lg rounded-lg p-3 border border-white/10 hover:border-amber-400/50 transition-all duration-200 flex items-center justify-between cursor-pointer shadow-sm hover:shadow-amber-400/10"
+              <div
+                class="group relative bg-white/5 backdrop-blur-lg rounded-lg p-3 border border-white/10 hover:border-amber-400/50 transition-all duration-200 flex items-center justify-between cursor-pointer shadow-sm hover:shadow-amber-400/10"
+              >
+                <select
+                  required
+                  class="bg-transparent border-none focus:outline-none text-white invalid:text-white/60 font-medium text-sm w-full truncate"
                 >
-                  <select
-                    class="bg-transparent border-none focus:outline-none text-white/60 font-medium text-sm w-full truncate"
+                  <option value="" disabled class="text-gray-500" selected>
+                    Always attend interview?
+                  </option>
+                  <option value="yes" class="text-black">Yes</option>
+                  <option value="no" class="text-black">No</option>
+                </select>
+                <div class="flex-shrink-0 ml-2">
+                  <svg
+                    aria-label="Radial"
+                    viewBox="0 0 24 24"
+                    class="StyledIcon-sc-ofa7kd-0 RacMK w-6 h-6 text-amber-400/80 group-hover:text-amber-400 transition-all"
                   >
-                    <option value="" disabled="" class="text-white/60" selected>
-                      Always attend interview?
-                    </option>
-                    <option value="yes" class="text-black">Yes</option>
-                    <option value="no" class="text-black">No</option>
-                  </select>
-                  <div class="flex-shrink-0 ml-2">
-                    <svg
-                      aria-label="Radial"
-                      viewBox="0 0 24 24"
-                      class="StyledIcon-sc-ofa7kd-0 RacMK w-6 h-6 text-amber-400/80 group-hover:text-amber-400 transition-all"
-                    >
-                      <circle
-                        cx="12"
-                        cy="12"
-                        r="11"
-                        fill="none"
-                        stroke="#212121"
-                        stroke-width="2"
-                      ></circle>
-                    </svg>
-                  </div>
-                  <div
-                    class="absolute -top-7 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white text-xs px-2 py-1 rounded pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap shadow-lg border border-white/5"
-                  >
-                    attend interview?
-                  </div>
+                    <circle
+                      cx="12"
+                      cy="12"
+                      r="11"
+                      fill="none"
+                      stroke="#212121"
+                      stroke-width="2"
+                    ></circle>
+                  </svg>
                 </div>
+                <div
+                  class="absolute -top-7 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white text-xs px-2 py-1 rounded pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap shadow-lg border border-white/5"
+                >
+                  attend interview?
+                </div>
+              </div>
             </div>
             <div class="flex justify-center items-center">
               <button
@@ -822,24 +833,11 @@
           </div>
         </div>
         <div
-          class="min-h-screen w-screen flex flex-col relative overflow-hidden text-white hidden"
+          class="min-h-screen w-screen flex flex-col relative overflow-hidden text-white hidden mt-24"
           id="demo-page"
         >
-          <div class="absolute inset-0 -z-10">
-            <div class="w-full h-full">
-              <canvas
-                width="425"
-                height="2702"
-                style="
-                  width: 425px;
-                  height: 2702px;
-                  background-color: transparent;
-                "
-              ></canvas>
-            </div>
-          </div>
           <div
-            class="mt-24 mx-4 sm:mx-6 md:mx-10 bg-white/5 backdrop-blur-lg rounded-xl p-4 md:p-6 border border-white/10 z-20"
+            class="mx-4 sm:mx-6 md:mx-10 bg-white/5 backdrop-blur-lg rounded-xl p-4 md:p-6 border border-white/10 z-20"
           >
             <h3 class="text-lg md:text-xl font-bold text-white mb-4">
               Your Demo Bookmarklet
