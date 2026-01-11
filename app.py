@@ -1,6 +1,6 @@
 splitted=[]
 joined="javascript:"
-with open('./bk.js', 'r') as in_file:
+with open('./to-bk.js', 'r') as in_file:
     for line in in_file:
         splitted.append(line.strip())
 joined+=''.join(splitted)

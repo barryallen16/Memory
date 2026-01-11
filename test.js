@@ -288,62 +288,48 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  function createBkmklt(data) {
-    const bkmkltWithPlaceholders = `javascript:var yearMapping = {1: ["i", "1", "firstyear"],2: ["ii", "2", "secondyear"],3: ["iii", "3", "thirdyear", "prefinalyear"],4: ["iv", "4", "fourthyear", "finalyear"],};var semMapping = {1: ["i", "1"],2: ["ii", "2"],3: ["iii", "3"],4: ["iv", "4"],5: ["v", "5"],6: ["vi", "6"],7: ["vii", "7"],8: ["8", "viii"],};var deptMapping = {CSE: {value: "CSE",possibleValues: ["cse", "c.s.e", "computerscienceengineering"],},CFIS: {value: "CFIS",possibleValues: ["cse","cfis","cyberforensicsandinformationalsecurity","cybersecurity",],},AI: {value: "Artificial Intelligence",possibleValues: ["ai", "artificialintelligence"],negPossibleValues: ["artificialintelligenceanddatascience","ds&ai","ai&ds","artificialintelligence&datascience","aids",],},IT: {value: "Information Technology",possibleValues: ["it", "Information technology"],},"DS&AI": {value: "DS & AI",possibleValues: ["artificialintelligenceanddatascience","ds&ai","ai&ds","artificialintelligence&datascience","aids",],},};var questions = document.querySelectorAll('div[role="listitem"]');var nativeInputValueSetter = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,"value").set;var fieldMappings = [{patterns: ["college name","your college name","college","university name","your university name","institution name","name of your college","name of your university","educational institution","name of institution","college/university","institute name",],value: "Dr. M.G.R. Educational and Research Institute",possibleValues: ["Dr. M.G.R. Educational and Research Institute","dr.m.g.r.educationalandresearchinstitute","dr.m.g.r.educational&researchinstitute","Dr. M.G.R. Educational & Research Institute","dr.mgr.educationalandresearchinstitute",],negPattern:undefined,negPossibleValues:undefined},{patterns: ["your name","name","student name","full name","complete name","name of student","applicant name","candidate name","participant name",],value: ${JSON.stringify(
-      String(data.name)
-    )},negPattern:undefined,negPossibleValues:undefined},{patterns: ["reg no","reg. no.","register number","register no","registration number","student id","student number","university id","college id","roll number","roll no",],value: ${JSON.stringify(
-      String(data.regNo)
-    )},negPattern:undefined,negPossibleValues:undefined},{patterns: ["your phone no","contact no","phone number","contact number","mobile number","mobile no",],value: ${JSON.stringify(
-      String(data.phone)
-    )},negPattern:undefined,negPossibleValues:undefined},{ patterns: ["whatsapp no", "whatsapp number"], value: ${JSON.stringify(
-      String(data.whatsapp)
-    )},negPattern:undefined,negPossibleValues:undefined },{patterns: ["email","your email","email address","email id","e-mail","personal email id","mail id",],value: ${JSON.stringify(
-      String(data.email)
-    )},negPattern:undefined,negPossibleValues:undefined},{patterns: ["year", "year of study"],negPattern: ["year of passing"],value: ${JSON.stringify(
-      String(data.year)
-    )},...(yearMapping[${JSON.stringify(
-      String(data.year)
-    )}] && { possibleValues: yearMapping[${JSON.stringify(
-      String(data.year)
-    )}] }),negPossibleValues:undefined},{patterns: ["branch", "department", "stream"],...(deptMapping[${JSON.stringify(
-      String(data.dept)
-    )}] && {value: deptMapping[${JSON.stringify(
-      String(data.dept)
-    )}]["value"],possibleValues: deptMapping[${JSON.stringify(
-      String(data.dept)
-    )}]["possibleValues"],negPattern:undefined,negPossibleValues:undefined}),},{patterns: ["gender"],value: ${JSON.stringify(
-      String(data.gender)
-    )},negPossibleValues:undefined,...(${JSON.stringify(
-      String(data.gender)
-    )}== "Male" && {negPossibleValues: ["female", "f"],possibleValues: ["male", "m"],}),...(${JSON.stringify(
-      String(data.gender)
-    )} == "Female" && {possibleValues: ["female", "f"],}),negPattern:undefined,},{patterns: ["semester"],value: ${JSON.stringify(
-      String(data.semester)
-    )},...(semMapping[${JSON.stringify(
-      String(data.semester)
-    )}] && {possibleValues: semMapping[${JSON.stringify(
-      String(data.semester)
-    )}],}),negPattern:undefined,negPossibleValues:undefined},{ patterns: ["degree"], value: "btech", possibleValues: ["b.tech"] ,        negPattern:undefined,negPossibleValues:undefined},{ patterns: ["section"], value: ${JSON.stringify(
-      String(data.section)
-    )} ,         negPattern:undefined,negPossibleValues:undefined},{ patterns: ["10%", "10 %","10th%","10th %", "10th percentage"], value: ${JSON.stringify(
-      String(data.tenPercent)
-    )} ,         negPattern:undefined,negPossibleValues:undefined},{ patterns: ["12%", "12 %","12th%","12th %", "12th percentage"], value: ${JSON.stringify(
-      String(data.twelvePercent)
-    )},         negPattern:undefined,negPossibleValues:undefined },{patterns: ["ug cgpa", "cgpa"],negPattern: ["pg cgpa"],value: ${JSON.stringify(
-      String(data.cgpa)
-    )},negPossibleValues:undefined},{ patterns: ["arrears"], value: ${JSON.stringify(
-      String(data.arrears)
-    )},negPattern:undefined,negPossibleValues:undefined },{ patterns: ["date of birth"], value: ${JSON.stringify(
-      String(data.dob)
-    )},negPattern:undefined,negPossibleValues:undefined },{patterns: ["year of passing out", "year of passing"],value: ${JSON.stringify(
-      String(data.yop)
-    )},possibleValues: [${JSON.stringify(
-      String(data.yop)
-    )}],negPattern:undefined,negPossibleValues:undefined},{patterns: ["are you interested to attend the interview process"],value:"none",...(${JSON.stringify(
-      String(data.interview)
-    )} === "yes" && {value: "yes",possibleValues: ["yes"]}),negPattern:undefined,negPossibleValues:undefined}];function normalizeString(str) {return str.toLowerCase().replace(/\\s+/g, "");}questions.forEach((question) => {if (question.querySelector("span")) {var questionText = question.querySelector("span").innerText.toLowerCase();for (var mapping of fieldMappings) {if (mapping.patterns.some((pattern) => questionText.includes(pattern))) {if (mapping.negPattern &&mapping.negPattern.some((negPattern) =>questionText.includes(negPattern))) {continue;} else {var input = question.querySelector("input");var radios = question.querySelectorAll('[role="radio"]');var dropdown = question.querySelectorAll('[role="option"]');if (dropdown.length > 0) {dropdown.forEach((option) => {option.setAttribute("aria-selected", "false");option.setAttribute("tabindex", "-1");});for (option of dropdown) {var optionValue = option.getAttribute("data-value");if (mapping.possibleValues) {var normalized = normalizeString(optionValue);if (mapping.possibleValues.includes(normalized)) {option.setAttribute("aria-selected", "true");option.setAttribute("tabindex", "0");option.click();setTimeout(() => {option.click();}, 100);}}}} else if (radios.length > 0) {for (const radio of radios) {var radioValue = radio.getAttribute("data-value");if (mapping.possibleValues) {var normalized = normalizeString(radioValue);if (mapping.negPossibleValues &&mapping.negPossibleValues.includes(normalized)) {continue;}if (mapping.possibleValues.includes(normalized)) {radio.click();break;}}}} else if (input) {nativeInputValueSetter.call(input, mapping.value);input.dispatchEvent(new Event("input", { bubbles: true }));input.dispatchEvent(new Event("change", { bubbles: true }));} else {console.log("No input found for ", question);}}}}}});`;
-    return bkmkltWithPlaceholders;
+  function createBkmklt(d) {
+    // Helper to minify JSON.stringify(value || "")
+    const S = (v) => JSON.stringify(v || "");
+
+    const bkmklt = `javascript: (function(){var Y={'1':['i','1','firstyear'],'I-year':['i','1','firstyear'],'2':['ii','2','secondyear'],'II-year':['ii','2','secondyear'],'3':['iii','3','thirdyear','prefinalyear'],'III-year':['iii','3','thirdyear','prefinalyear'],'4':['iv','4','fourthyear','finalyear'],'IV-year':['iv','4','fourthyear','finalyear']},S={'1':['i','1'],'2':['ii','2'],'3':['iii','3'],'4':['iv','4'],'5':['v','5'],'6':['vi','6'],'7':['vii','7'],'8':['8','viii']},D={'CSE':{v:'CSE',p:['cse','c.s.e','computerscienceengineering']},'CFIS':{v:'CFIS',p:['cse','cfis','cyberforensicsandinformationalsecurity','cybersecurity']},'AI':{v:'Artificial Intelligence',p:['ai','artificialintelligence'],npv:['artificialintelligenceanddatascience','ds&ai','ai&ds','artificialintelligence&datascience','aids']},'IT':{v:'Information Technology',p:['it','Information technology']},'DS&AI':{v:'DS & AI',p:['artificialintelligenceanddatascience','ds&ai','ai&ds','artificialintelligence&datascience','aids']}};var qs=document.querySelectorAll('div[role="listitem"]'),set=Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,"value").set;var M=[{p:['college','university','institution'],v:'Dr. M.G.R. Educational and Research Institute',pv:['Dr. M.G.R. Educational and Research Institute','dr.m.g.r.educationalandresearchinstitute','drmgreducationalandresearchinstitute']},{p:['name','student name','full name'],v:${S(
+      d.name
+    )}},{p:['reg no','register number','roll no','register no'],v:${S(
+      d.regNo
+    )}},{p:['phone','contact','mobile'],v:${S(d.phone)}},{p:['whatsapp'],v:${S(
+      d.whatsapp
+    )}},{p:['email','e-mail','mail'],v:${S(
+      d.email
+    )}},{p:['year','year of study'],np:['year of passing'],v:${S(
+      d.year
+    )},pv:Y[${S(d.year)}]||[]},{p:['branch','department','stream'],v:(D[${S(
+      d.dept
+    )}]||{}).v||${S(d.dept)},pv:(D[${S(d.dept)}]||{}).p||[],npv:(D[${S(
+      d.dept
+    )}]||{}).npv},{p:['gender'],v:${S(d.gender)},pv:${S(
+      d.gender
+    )}=='Male'?['male','m']:['female','f']},{p:['semester'],v:${S(
+      d.semester
+    )},pv:S[${S(
+      d.semester
+    )}]||[]},{p:['degree'],v:'btech',pv:['b.tech']},{p:['section'],v:${S(
+      d.section
+    )}},{p:['10%','10th'],v:${S(d.tenPercent)}},{p:['12%','12th'],v:${S(
+      d.twelvePercent
+    )}},{p:['cgpa'],np:['pg'],v:${S(d.cgpa)}},{p:['arrears'],v:${S(
+      d.arrears
+    )}},{p:['date of birth'],v:${S(d.dob)}},{p:['year of passing'],v:${S(
+      d.yop
+    )},pv:[${S(d.yop)}]},{p:['interview'],v:${S(
+      d.interview
+    )}=='yes'?'yes':'none',pv:${S(
+      d.interview
+    )}=='yes'?['yes']:[]}];var norm=function(s){return s.toLowerCase().replace(/\\s+/g,'')};qs.forEach(function(q){var sp=q.querySelector('span');if(!sp)return;var txt=sp.innerText.toLowerCase();for(var i=0;i<M.length;i++){var m=M[i];if(m.p.some(function(p){return txt.includes(p)})){if(m.np&&m.np.some(function(n){return txt.includes(n)}))continue;var inp=q.querySelector('input:not([type=hidden])'),rad=q.querySelectorAll('[role="radio"]'),opt=q.querySelectorAll('[role="option"]');if(opt.length){opt.forEach(function(o){o.setAttribute('aria-selected','false');o.tabIndex=-1});opt.forEach(function(o){if(m.pv&&m.pv.includes(norm(o.dataset.value))){o.setAttribute('aria-selected','true');o.tabIndex=0;o.click();setTimeout(function(){o.click()},100);}});} else if(rad.length){rad.forEach(function(r){var rv=norm(r.dataset.value);if(m.npv&&m.npv.includes(rv))return;if(m.pv&&m.pv.includes(rv))r.click();});} else if(inp){set.call(inp,m.v);inp.dispatchEvent(new Event('input',{bubbles:true}));inp.dispatchEvent(new Event('change',{bubbles:true}));}break;}}});})();`;
+
+    // Compress: Remove all whitespace and newlines before returning
+    return bkmklt;
   }
+
   function findInputByPlaceholder(text) {
     return Array.from(document.querySelectorAll("input")).find(
       (i) => i.placeholder === text
